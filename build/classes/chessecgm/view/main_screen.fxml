@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <HBox prefHeight="42.0" prefWidth="952.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="textInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onKeyPressed="#onTextInputPress" prefHeight="28.0" promptText="Escreva a sua mensagem..." HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Button fx:id="btnSend" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onButtonSendClick" prefHeight="43.0" prefWidth="83.0" text="Enviar" textFill="#166fb9">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+         </children>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <left>
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="200.0" style="-fx-border-color: #BDBDBD;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblChessTimer" text="Timer" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <VBox fx:id="fieldPlayer2" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../designs/player1.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nameP2" text="Player 2" textFill="#166fb9">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="PRETAS" textAlignment="JUSTIFY">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="30.0" prefWidth="198.0">
+                     <children>
+                        <Label maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="Jogadas:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lastMoveP2" prefHeight="30.0" prefWidth="82.0" text="N/A">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <Label text="VS" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <VBox fx:id="fieldPlayer1" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../designs/player2.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nameP1" text="Player 1" textFill="#166fb9">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="BRANCAS" textAlignment="JUSTIFY">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="30.0" prefWidth="198.0">
+                     <children>
+                        <Label maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="Jogadas:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lastMoveP1" prefHeight="30.0" prefWidth="82.0" text="N/A">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets right="10.0" />
+         </BorderPane.margin></VBox>
+   </left>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #BDBDBD;" BorderPane.alignment="CENTER">
+         <top>
+            <HBox prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="30.0" />
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="66.0" text="A">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="66.0" text="B" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="10.0" prefHeight="55.0" prefWidth="66.0" text="C" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="142.0" layoutY="10.0" prefHeight="55.0" prefWidth="66.0" text="D" GridPane.columnIndex="3">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="196.0" layoutY="10.0" prefHeight="55.0" prefWidth="66.0" text="E" GridPane.columnIndex="4">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="258.0" layoutY="10.0" prefHeight="55.0" prefWidth="66.0" text="F" GridPane.columnIndex="5">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="321.0" layoutY="10.0" prefHeight="55.0" prefWidth="66.0" text="G" GridPane.columnIndex="6">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="384.0" layoutY="10.0" prefHeight="55.0" prefWidth="66.0" text="H" GridPane.columnIndex="7">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children></HBox>
+         </top>
+         <left>
+            <VBox prefHeight="200.0" prefWidth="30.0" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane alignment="CENTER" prefHeight="515.0" prefWidth="50.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="79.0" text="8">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="79.0" text="7" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="73.0" prefHeight="63.0" prefWidth="79.0" text="6" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="136.0" prefHeight="63.0" prefWidth="79.0" text="5" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="199.0" prefHeight="63.0" prefWidth="79.0" text="4" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="262.0" prefHeight="63.0" prefWidth="79.0" text="3" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="324.0" prefHeight="63.0" prefWidth="79.0" text="2" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="386.0" prefHeight="63.0" prefWidth="79.0" text="1" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <GridPane fx:id="chessPane" maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </center>
+      </BorderPane>
+   </center>
+   <right>
+      <VBox prefHeight="0.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="337.0" text="CHAT DO JOGO" textAlignment="CENTER" textFill="#166fb9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="chatBox" editable="false" prefHeight="400.0" prefWidth="300.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextArea>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="337.0" text="STATUS DO JOGO" textAlignment="CENTER" textFill="#166fb9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="infocurrent" alignment="BASELINE_CENTER" contentDisplay="CENTER" lineSpacing="1.0" prefHeight="152.0" prefWidth="300.0" style="-fx-border-color: #BDBDBD; -fx-background-color: #F4F4F4;" text="Label" textAlignment="CENTER" textFill="#ff8f2d">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Label prefHeight="148.0" prefWidth="300.0" text="Label">
+               <graphic>
+                  <Button fx:id="exitbotton" mnemonicParsing="false" onAction="#onButtonleave" prefHeight="31.0" prefWidth="298.0" snapToPixel="false" text="Sair" visible="false" />
+               </graphic>
+            </Label>
+            <SplitPane fx:id="drawsplit" dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #BDBDBD;">
+               <items>
+                  <Button fx:id="yesdraw" mnemonicParsing="false" onAction="#onButtonyesdraw" prefHeight="31.0" prefWidth="150.0" text="Sim" visible="false" />
+                  <Button fx:id="nodraw" mnemonicParsing="false" onAction="#onButtonnodraw" prefHeight="31.0" prefWidth="163.0" text="Não" visible="false" />
+               </items>
+            </SplitPane>
+            <Label prefHeight="147.0" prefWidth="300.0">
+               <graphic>
+                  <Button fx:id="closeButton" mnemonicParsing="false" onAction="#onButtongivup" prefHeight="31.0" prefWidth="403.0" text="Desistir" textAlignment="CENTER" />
+               </graphic>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="300.0">
+               <graphic>
+                  <Button fx:id="drawask" mnemonicParsing="false" onAction="#onButtondraw" prefHeight="31.0" prefWidth="420.0" text="Empatar" textAlignment="CENTER" visible="false" />
+               </graphic>
+            </Label>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
